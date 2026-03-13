@@ -180,5 +180,27 @@ public class PalindromeCheckerApp {
 
         System.out.println("Is Palindrome?: " + isPalindrome);
 
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 9: Recursive Palindrome Checker");
+        System.out.println("==============================================");
+
+        input = "madam";
+        System.out.println("Input String: " + input);
+
+        isPalindrome = check(input, 0, input.length() - 1);
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
+    }
+
+    private static boolean check(String s, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        return check(s, start + 1, end - 1);
     }
 }
