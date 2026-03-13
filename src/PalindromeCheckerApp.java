@@ -56,7 +56,6 @@ public class PalindromeCheckerApp {
         char[] chars = input.toCharArray();
 
         int start = 0;
-
         int end = chars.length - 1;
 
         isPalindrome = true;
@@ -146,6 +145,34 @@ public class PalindromeCheckerApp {
             char right = deque.removeLast();
 
             if (left != right) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 8: Linked List Based Palindrome Check");
+        System.out.println("==============================================");
+
+        input = "level";
+        System.out.println("Input String: " + input);
+
+        java.util.LinkedList<Character> list = new java.util.LinkedList<>();
+
+        for (char c : input.toCharArray()) {
+            list.add(c);
+        }
+
+        isPalindrome = true;
+
+        while (list.size() > 1) {
+
+            char first = list.removeFirst();
+            char last = list.removeLast();
+
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
