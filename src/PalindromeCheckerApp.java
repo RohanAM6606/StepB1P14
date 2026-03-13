@@ -212,6 +212,18 @@ public class PalindromeCheckerApp {
 
         System.out.println("Normalized String: " + normalized);
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 11: Object-Oriented Palindrome Service");
+        System.out.println("==============================================");
+
+        input = "racecar";
+        System.out.println("Input String: " + input);
+
+        PalindromeService service = new PalindromeService();
+        isPalindrome = service.checkPalindrome(input);
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 
     private static boolean check(String s, int start, int end) {
@@ -224,5 +236,26 @@ public class PalindromeCheckerApp {
         }
 
         return check(s, start + 1, end - 1);
+    }
+}
+
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
     }
 }
