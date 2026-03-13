@@ -72,5 +72,29 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 5: Stack Based Palindrome Check");
+        System.out.println("==============================================");
+
+        input = "noon";
+        System.out.println("Input String: " + input);
+
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        isPalindrome = true;
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 }
