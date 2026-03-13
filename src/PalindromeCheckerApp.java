@@ -190,6 +190,28 @@ public class PalindromeCheckerApp {
         isPalindrome = check(input, 0, input.length() - 1);
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 10: Case-Insensitive & Space-Ignored Palindrome");
+        System.out.println("==============================================");
+
+        input = "A man a plan a canal Panama";
+        System.out.println("Input String: " + input);
+
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        isPalindrome = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Normalized String: " + normalized);
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 
     private static boolean check(String s, int start, int end) {
