@@ -125,5 +125,33 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 7: Deque Based Optimized Palindrome Check");
+        System.out.println("==============================================");
+
+        input = "refer";
+        System.out.println("Input String: " + input);
+
+        java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            deque.add(c);
+        }
+
+        isPalindrome = true;
+
+        while (deque.size() > 1) {
+            char left = deque.removeFirst();
+            char right = deque.removeLast();
+
+            if (left != right) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
+
     }
 }
