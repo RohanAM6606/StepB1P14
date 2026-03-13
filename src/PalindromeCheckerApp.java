@@ -96,5 +96,34 @@ public class PalindromeCheckerApp {
         }
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 6: Queue + Stack Based Palindrome Check");
+        System.out.println("==============================================");
+
+        input = "civic";
+        System.out.println("Input String: " + input);
+
+        java.util.Queue<Character> queue = new java.util.LinkedList<>();
+        java.util.Stack<Character> stack2 = new java.util.Stack<>();
+
+        for (char c : input.toCharArray()) {
+            queue.add(c);
+            stack2.push(c);
+        }
+
+        isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+            char fromQueue = queue.remove();
+            char fromStack = stack2.pop();
+
+            if (fromQueue != fromStack) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
     }
 }
