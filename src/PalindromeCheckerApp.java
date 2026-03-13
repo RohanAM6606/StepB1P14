@@ -231,6 +231,26 @@ public class PalindromeCheckerApp {
         isPalindrome = strategy.check(input);
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 13: Performance Comparison");
+        System.out.println("==============================================");
+
+        input = "level";
+        System.out.println("Input: " + input);
+
+        PalindromeStrategy performanceStrategy = new StackStrategy();
+
+        long startTime = System.nanoTime();
+
+        boolean result = performanceStrategy.check(input);
+
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
+
+        System.out.println("Is Palindrome?: " + result);
+        System.out.println("Execution Time: " + executionTime + " ns");
     }
 
     private static boolean check(String s, int start, int end) {
