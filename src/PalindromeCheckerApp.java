@@ -11,7 +11,6 @@ public class PalindromeCheckerApp {
         boolean isPalindrome = true;
 
         for (int j = 0; j < input.length() / 2; j++) {
-
             if (input.charAt(j) != input.charAt(input.length() - 1 - j)) {
                 isPalindrome = false;
                 break;
@@ -29,7 +28,6 @@ public class PalindromeCheckerApp {
         System.out.println("==============================================");
 
         input = "LEVEL";
-
         String reversed = "";
 
         System.out.println("Original String: " + input);
@@ -65,7 +63,6 @@ public class PalindromeCheckerApp {
                 isPalindrome = false;
                 break;
             }
-
             start++;
             end--;
         }
@@ -168,7 +165,6 @@ public class PalindromeCheckerApp {
         isPalindrome = true;
 
         while (list.size() > 1) {
-
             char first = list.removeFirst();
             char last = list.removeLast();
 
@@ -203,7 +199,6 @@ public class PalindromeCheckerApp {
         isPalindrome = true;
 
         for (int i = 0; i < normalized.length() / 2; i++) {
-
             if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
@@ -224,6 +219,38 @@ public class PalindromeCheckerApp {
         isPalindrome = service.checkPalindrome(input);
 
         System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 12: Strategy Pattern for Palindrome Algorithms");
+        System.out.println("==============================================");
+
+        input = "level";
+        System.out.println("Input String: " + input);
+
+        PalindromeStrategy strategy = new StackStrategy();
+        isPalindrome = strategy.check(input);
+
+        System.out.println("Is Palindrome?: " + isPalindrome);
+
+        System.out.println("==============================================");
+        System.out.println("      USE CASE 13: Performance Comparison");
+        System.out.println("==============================================");
+
+        input = "level";
+        System.out.println("Input: " + input);
+
+        PalindromeStrategy performanceStrategy = new StackStrategy();
+
+        long startTime = System.nanoTime();
+
+        boolean result = performanceStrategy.check(input);
+
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
+
+        System.out.println("Is Palindrome?: " + result);
+        System.out.println("Execution Time: " + executionTime + " ns");
     }
 
     private static boolean check(String s, int start, int end) {
@@ -240,20 +267,40 @@ public class PalindromeCheckerApp {
 }
 
 class PalindromeService {
-
     public boolean checkPalindrome(String input) {
-
         int start = 0;
         int end = input.length() - 1;
 
         while (start < end) {
-
             if (input.charAt(start) != input.charAt(end)) {
                 return false;
             }
-
             start++;
             end--;
+        }
+
+        return true;
+    }
+}
+
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+class StackStrategy implements PalindromeStrategy {
+
+    public boolean check(String input) {
+
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
         }
 
         return true;
